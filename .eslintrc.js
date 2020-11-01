@@ -16,6 +16,7 @@ module.exports = {
   },
   rules: {
     "no-console": 'off',
+    "import/prefer-default-export": 'off',
     "import/extensions": ['off']
   }
 }
