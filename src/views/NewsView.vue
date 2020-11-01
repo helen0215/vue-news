@@ -10,22 +10,16 @@
 </template>
 
 <script>
-import { fetchNewsList } from '../api';
+import { SET_NEWS } from '../constants/actions';
 
 export default {
-  data() {
-    return {
-      newsList: [],
-    };
+  computed: {
+    newsList() {
+      return this.$store.state.newsList;
+    },
   },
   created() {
-    fetchNewsList()
-      .then((response) => {
-        this.newsList = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch(SET_NEWS);
   },
 };
 </script>
