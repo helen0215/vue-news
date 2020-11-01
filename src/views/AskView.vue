@@ -10,22 +10,16 @@
 </template>
 
 <script>
-import { fetchAskList } from '../api';
+import { SET_ASK } from '../constants/actions';
 
 export default {
-  data() {
-    return {
-      askList: [],
-    };
+  computed: {
+    askList() {
+      return this.$store.state.askList;
+    },
   },
   created() {
-    fetchAskList()
-      .then((response) => {
-        this.askList = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch(SET_ASK);
   },
 };
 </script>

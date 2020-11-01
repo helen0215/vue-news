@@ -10,22 +10,16 @@
 </template>
 
 <script>
-import { fetchJobsList } from '../api';
+import { SET_JOBS } from '../constants/actions';
 
 export default {
-  data() {
-    return {
-      jobsList: [],
-    };
+  computed: {
+    jobsList() {
+      return this.$store.state.jobsList;
+    },
   },
   created() {
-    fetchJobsList()
-      .then((response) => {
-        this.jobsList = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.$store.dispatch(SET_JOBS);
   },
 };
 </script>
