@@ -12,28 +12,28 @@ export default new Vuex.Store({
     jobsList: [],
   },
   actions: {
-    [SET_NEWS](context) {
+    [SET_NEWS]({ commit }) {
       fetchNewsList()
         .then((response) => {
-          context.commit(SET_NEWS, response.data);
+          commit(SET_NEWS, response.data);
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    [SET_ASK](context) {
+    [SET_ASK]({ commit }) {
       fetchAskList()
         .then((response) => {
-          context.commit(SET_ASK, response.data);
+          commit(SET_ASK, response.data);
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    [SET_JOBS](context) {
+    [SET_JOBS]({ commit }) {
       fetchJobsList()
         .then((response) => {
-          context.commit(SET_JOBS, response.data);
+          commit(SET_JOBS, response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -51,5 +51,7 @@ export default new Vuex.Store({
       state.jobsList = jobsList;
     },
   },
-  // getters,
+  getters: {
+    fetchedAsk: (state) => state.askList,
+  },
 });

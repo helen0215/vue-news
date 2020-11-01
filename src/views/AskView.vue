@@ -10,13 +10,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { SET_ASK } from '../constants/actions';
 
 export default {
   computed: {
-    askList() {
-      return this.$store.state.askList;
-    },
+    ...mapGetters({
+      askList: 'fetchedAsk',
+    }),
+    // ...mapGetters([
+    //   'fetchedAsk',
+    // ]),
   },
   created() {
     this.$store.dispatch(SET_ASK);
