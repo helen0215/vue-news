@@ -1,4 +1,6 @@
-import { SET_NEWS, SET_ASK, SET_JOBS } from '../constants/actions';
+import {
+  SET_NEWS, SET_ASK, SET_JOBS, SET_USER, RESET_USER,
+} from '../constants/actions';
 
 export default {
   [SET_NEWS](state, newsList) {
@@ -9,5 +11,11 @@ export default {
   },
   [SET_JOBS](state, jobList) {
     state.jobList = jobList;
+  },
+  [SET_USER](state, user) {
+    state.user = user;
+  },
+  [RESET_USER](state) {
+    state.user = {};
   },
 };
