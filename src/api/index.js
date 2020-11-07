@@ -6,4 +6,4 @@ const instance = axios.create({
 
 export const fetchNewsList = (page = 1) => instance.get(`/news/${page}.json`);
 export const fetchAskList = (page = 1) => instance.get(`/ask/${page}.json`);
-export const fetchJobsList = (page = 1) => instance.get(`/jobs/${page}.json`);
+export const fetchjobList = (page = 1) => instance.get(`/jobs/${page}.json`);

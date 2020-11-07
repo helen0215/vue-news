@@ -1,11 +1,16 @@
 <template>
   <div>
-    <div
+    <p
       v-for="(news, index) in newsList"
       :key="index"
     >
-      {{ news.title }}
-    </div>
+      <a
+        :href="news.url"
+      >
+        {{news.title}}
+      </a>
+      <small>{{news.time_ago}} by {{news.user}}</small>
+    </p>
   </div>
 </template>
 

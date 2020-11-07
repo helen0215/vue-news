@@ -1,11 +1,15 @@
 <template>
   <div>
-    <div
-      v-for="(jobs, index) in jobsList"
+    <p
+      v-for="(job, index) in jobList"
       :key="index"
     >
-      {{ jobs.title }}
-    </div>
+      <a
+      :href="job.url">
+        {{job.title}}
+      </a>
+      <small>{{job.time_ago}}, {{job.domain}}</small>
+    </p>
   </div>
 </template>
 
@@ -14,8 +18,8 @@ import { SET_JOBS } from '../constants/actions';
 
 export default {
   computed: {
-    jobsList() {
-      return this.$store.state.jobsList;
+    jobList() {
+      return this.$store.state.jobList;
     },
   },
   created() {

@@ -7,7 +7,7 @@ export default {
   [SET_ASK](state, askList) {
     state.askList = askList;
   },
-  [SET_JOBS](state, jobsList) {
-    state.jobsList = jobsList;
+  [SET_JOBS](state, jobList) {
+    state.jobList = jobList;
   },
 };

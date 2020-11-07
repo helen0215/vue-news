@@ -1,11 +1,15 @@
 <template>
   <div>
-    <div
+    <p
       v-for="(ask, index) in askList"
       :key="index"
     >
-      {{ ask.title }}
-    </div>
+      <a
+      :href="ask.url">
+        {{ask.title}}
+      </a>
+      <small>{{ask.time_ago}}, {{ask.domain}}</small>
+    </p>
   </div>
 </template>
 
