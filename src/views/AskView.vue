@@ -4,10 +4,11 @@
       v-for="(ask, index) in askList"
       :key="index"
     >
-      <a
-      :href="ask.url">
+      <router-link
+        :to="`/item/${ask.id}`"
+      >
         {{ask.title}}
-      </a>
+      </router-link>
       <small>{{ask.time_ago}}, {{ask.domain}}</small>
     </p>
   </div>

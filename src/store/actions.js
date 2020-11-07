@@ -1,8 +1,8 @@
 import {
-  fetchNewsList, fetchAskList, fetchJobList, fetchUserInfo,
+  fetchNewsList, fetchAskList, fetchJobList, fetchUserInfo, fetchItem,
 } from '../api';
 import {
-  SET_NEWS, SET_ASK, SET_JOBS, SET_USER, RESET_USER,
+  SET_NEWS, SET_ASK, SET_JOBS, SET_USER, SET_ITEM,
 } from '../constants/actions';
 
 export default {
@@ -42,7 +42,13 @@ export default {
         console.log(error);
       });
   },
-  [RESET_USER]({ commit }) {
-    commit(RESET_USER);
+  [SET_ITEM]({ commit }, itemId) {
+    fetchItem(itemId)
+      .then((response) => {
+        commit(SET_ITEM, response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };

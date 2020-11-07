@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { RESET_USER, SET_USER } from '../constants/actions';
+import { SET_USER } from '../constants/actions';
 
 export default {
   created() {
@@ -18,9 +18,6 @@ export default {
     user() {
       return this.$store.state.user;
     },
-  },
-  beforeDestroy() {
-    this.$store.dispatch(RESET_USER);
   },
 };
 </script>

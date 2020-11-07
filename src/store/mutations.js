@@ -1,5 +1,5 @@
 import {
-  SET_NEWS, SET_ASK, SET_JOBS, SET_USER, RESET_USER,
+  SET_NEWS, SET_ASK, SET_JOBS, SET_USER, SET_ITEM,
 } from '../constants/actions';
 
 export default {
@@ -15,7 +15,7 @@ export default {
   [SET_USER](state, user) {
     state.user = user;
   },
-  [RESET_USER](state) {
-    state.user = {};
+  [SET_ITEM](state, item) {
+    state.item = item;
   },
 };
