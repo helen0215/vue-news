@@ -24,12 +24,18 @@
         </p>
         <small class="link_text">
           {{contentItem.time_ago}} by
-          <router-link
+          <router-link v-if="contentItem.user"
             :to="`/user/${contentItem.user}`"
             class="link_text"
           >
             {{contentItem.user}}
           </router-link>
+          <a v-else
+            :href="contentItem.url"
+            target="_blank"
+          >
+            {{contentItem.domain}}
+          </a>
         </small>
       </div>
     </li>
