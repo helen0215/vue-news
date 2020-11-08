@@ -1,38 +1,32 @@
 <template>
   <div>
-    <p
-      v-for="(ask, index) in askList"
-      :key="index"
-    >
-      <router-link
-        :to="`/item/${ask.id}`"
-      >
-        {{ask.title}}
-      </router-link>
-      <small>{{ask.time_ago}}, {{ask.domain}}</small>
-    </p>
+    <list-item
+      :list="askList"
+      :listType="listType"
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import ListItem from '../components/ListItem';
 import { SET_ASK } from '../constants/actions';
+import { LIST_TYPE } from '../constants/list-type';
 
 export default {
+  components: {
+    ListItem,
+  },
   computed: {
     ...mapGetters({
       askList: 'fetchedAsk',
     }),
-    // ...mapGetters([
-    //   'fetchedAsk',
-    // ]),
+    listType() {
+      return LIST_TYPE.ASK;
+    },
   },
   created() {
     this.$store.dispatch(SET_ASK);
   },
 };
 </script>
-
-<style>
-
-</style>

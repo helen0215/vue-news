@@ -1,32 +1,28 @@
 <template>
   <div>
-    <p
-      v-for="(news, index) in newsList"
-      :key="index"
-    >
-      <a
-        :href="news.url"
-      >
-        {{news.title}}
-      </a>
-      <small>
-        {{news.time_ago}} by
-        <router-link
-          :to="`/user/${news.user}`">
-          {{news.user}}
-        </router-link>
-      </small>
-    </p>
+    <list-item
+      :list="newsList"
+      :listType="listType"
+    />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import ListItem from '../components/ListItem';
 import { SET_NEWS } from '../constants/actions';
+import { LIST_TYPE } from '../constants/list-type';
 
 export default {
+  components: {
+    ListItem,
+  },
   computed: {
-    newsList() {
-      return this.$store.state.newsList;
+    ...mapGetters({
+      newsList: 'fetchedNews',
+    }),
+    listType() {
+      return LIST_TYPE.NEWS;
     },
   },
   created() {
@@ -35,6 +31,33 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.news_list {
+  margin: 0;
+  padding: 0;
+}
 
+.post {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.points {
+  display: flex;
+  width: 80px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  color: #42b883
+}
+
+.news_title {
+  margin: 0;
+}
+
+.link_text {
+  color: #828282;
+}
 </style>
